@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Wilkerstat BPS Kabupaten Gorontalo — Prototype</title>
+<meta name="description" content="Prototype Linktree Wilkerstat BPS Kabupaten Gorontalo — 3 grup accordion + 2 standalone.">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bps-blue: #002E5D;
+    --bps-blue-light: #0057A8;
+    --bps-orange: #F7941E;
+    --bps-orange-dark: #D97A00;
+    --bps-green: #00875A;
+    --bps-green-light: #E6F4EE;
+    --neutral-900: #1A1A1A;
+    --neutral-600: #5A6A7A;
+    --neutral-100: #F0F3F7;
+    --neutral-50: #F8F9FB;
+    --radius: 16px;
+    --radius-sm: 12px;
+    --shadow-card: 0 4px 24px rgba(0,46,93,0.08);
+    --shadow-card-hover: 0 8px 32px rgba(0,46,93,0.14);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: var(--neutral-100);
+    color: var(--neutral-900);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Header */
+  .header {
+    background: linear-gradient(135deg, var(--bps-blue) 0%, var(--bps-blue-light) 100%);
+    color: white;
+    padding: 32px 20px 28px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=60') center/cover no-repeat;
+    opacity: 0.12;
+  }
+  .header-inner { position: relative; z-index: 1; max-width: 480px; margin: 0 auto; }
+  .header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255,255,255,0.14);
+    border: 1px solid rgba(255,255,255,0.22);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 999px;
+    margin-bottom: 14px;
+  }
+  .header-badge-dot {
+    width: 7px; height: 7px;
+    background: var(--bps-green);
+    border-radius: 50%;
+    box-shadow: 0 0 0 4px rgba(0,135,90,0.3);
+  }
+  .logo-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .logo-placeholder {
+    width: 48px; height: 48px;
+    background: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+    font-weight: 700;
+    color: var(--bps-blue);
+    line-height: 1.1;
+    text-align: center;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    line-height: 1.2;
+    margin-bottom: 6px;
+    letter-spacing: -0.02em;
+  }
+  .header h1 span { color: var(--bps-orange); }
+  .header p {
+    font-size: 13px;
+    font-weight: 500;
+    opacity: 0.88;
+    line-height: 1.5;
+  }
+  .header-meta {
+    margin-top: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  .header-meta span {
+    font-size: 11px;
+    font-weight: 600;
+    background: rgba(255,255,255,0.13);
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+
+  /* Container */
+  .container {
+    max-width: 480px;
+    margin: 0 auto;
+    padding: 20px 16px 40px;
+  }
+
+  /* Standalone primary (Daftar Hadir) */
+  .standalone-primary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--bps-orange);
+    color: var(--bps-blue);
+    text-decoration: none;
+    padding: 18px 20px;
+    border-radius: var(--radius);
+    box-shadow: 0 4px 20px rgba(247,148,30,0.35);
+    margin-bottom: 14px;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 2px solid transparent;
+  }
+  .standalone-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 28px rgba(247,148,30,0.45);
+    border-color: var(--bps-orange-dark);
+  }
+  .standalone-primary:active { transform: translateY(0); }
+  .standalone-primary-left { display: flex; align-items: center; gap: 14px; }
+  .standalone-primary-icon {
+    width: 44px; height: 44px;
+    background: var(--bps-blue);
+    color: white;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    flex-shrink: 0;
+  }
+  .standalone-primary-text strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 700;
+    line-height: 1.2;
+  }
+  .standalone-primary-text small {
+    font-size: 12px;
+    font-weight: 500;
+    opacity: 0.8;
+  }
+  .standalone-primary-arrow {
+    font-size: 18px;
+    font-weight: 700;
+    opacity: 0.7;
+  }
+
+  /* Accordion */
+  .accordion {
+    background: white;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    border: 1px solid rgba(0,46,93,0.07);
+    margin-bottom: 12px;
+    overflow: hidden;
+    transition: box-shadow 0.2s, border-color 0.2s;
+  }
+  .accordion:hover {
+    box-shadow: var(--shadow-card-hover);
+    border-color: rgba(247,148,30,0.25);
+  }
+  .accordion-header {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 18px;
+    background: white;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    font-family: inherit;
+  }
+  .accordion-header:focus-visible {
+    outline: 2px solid var(--bps-orange);
+    outline-offset: -2px;
+  }
+  .accordion-header-left { display: flex; align-items: center; gap: 12px; }
+  .accordion-icon {
+    width: 40px; height: 40px;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .accordion-icon.blue { background: #E8EEF6; }
+  .accordion-icon.green { background: var(--bps-green-light); }
+  .accordion-icon.orange { background: #FFF3E0; }
+  .accordion-title strong {
+    display: block;
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--bps-blue);
+    line-height: 1.2;
+  }
+  .accordion-title small {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--neutral-600);
+  }
+  .accordion-chevron {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--neutral-100);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    color: var(--neutral-600);
+    transition: transform 0.25s ease, background 0.2s;
+    flex-shrink: 0;
+  }
+  .accordion[aria-expanded="true"] .accordion-chevron {
+    transform: rotate(180deg);
+    background: var(--bps-blue);
+    color: white;
+  }
+  .accordion-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.28s ease;
+  }
+  .accordion[aria-expanded="true"] .accordion-body {
+    max-height: 500px;
+  }
+  .accordion-inner {
+    padding: 4px 14px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .sub-link {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 13px 14px;
+    background: var(--neutral-50);
+    border: 1px solid rgba(0,46,93,0.06);
+    border-radius: var(--radius-sm);
+    text-decoration: none;
+    color: var(--neutral-900);
+    transition: background 0.15s, border-color 0.15s, transform 0.12s;
+  }
+  .sub-link:hover {
+    background: white;
+    border-color: var(--bps-orange);
+    transform: translateY(-1px);
+    box-shadow: 0 2px 12px rgba(0,46,93,0.07);
+  }
+  .sub-link-icon {
+    width: 36px; height: 36px;
+    background: white;
+    border: 1px solid rgba(0,46,93,0.08);
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 16px;
+    flex-shrink: 0;
+  }
+  .sub-link-text strong {
+    display: block;
+    font-size: 13.5px;
+    font-weight: 600;
+    line-height: 1.2;
+  }
+  .sub-link-text small {
+    font-size: 11px;
+    color: var(--neutral-600);
+  }
+  .sub-link-arrow {
+    margin-left: auto;
+    font-size: 14px;
+    color: var(--neutral-600);
+    opacity: 0.6;
+  }
+  .sub-link.disabled {
+    opacity: 0.55;
+    pointer-events: none;
+  }
+  .sub-link.disabled .sub-link-text small { color: var(--bps-orange-dark); }
+
+  /* Standalone secondary (Q&A) */
+  .standalone-secondary {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: white;
+    color: var(--bps-blue);
+    text-decoration: none;
+    padding: 16px 18px;
+    border-radius: var(--radius);
+    box-shadow: var(--shadow-card);
+    border: 1.5px solid var(--bps-blue);
+    margin-top: 4px;
+    transition: background 0.15s, transform 0.12s;
+  }
+  .standalone-secondary:hover {
+    background: #E8EEF6;
+    transform: translateY(-1px);
+  }
+  .standalone-secondary-left { display: flex; align-items: center; gap: 12px; }
+  .standalone-secondary-icon {
+    width: 40px; height: 40px;
+    background: var(--bps-blue);
+    color: white;
+    border-radius: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+  }
+  .standalone-secondary-text strong { font-size: 14px; font-weight: 700; display: block; line-height: 1.2; }
+  .standalone-secondary-text small { font-size: 11px; color: var(--neutral-600); }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    padding: 28px 16px 20px;
+    font-size: 11px;
+    color: var(--neutral-600);
+    line-height: 1.6;
+  }
+  .footer strong { color: var(--bps-blue); }
+  .footer-links {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+  }
+  .footer-links a {
+    color: var(--bps-blue-light);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 11px;
+  }
+  .footer-links a:hover { text-decoration: underline; }
+
+  /* Prototype banner */
+  .proto-banner {
+    background: #FFF3CD;
+    border-bottom: 1px solid #FFD966;
+    color: #664D03;
+    text-align: center;
+    padding: 8px 16px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+  }
+  .proto-banner strong { color: #664D03; }
+
+  /* Helper */
+  .section-label {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--neutral-600);
+    margin: 18px 0 8px 4px;
+  }
+</style>
+</head>
+<body>
+
+<div class="proto-banner">⚠️ PROTOTYPE — Tiket 03 · Klik accordion untuk expand/collapse · Link masih <code>#</code> (placeholder)</div>
+
+<header class="header">
+  <div class="header-inner">
+    <div class="header-badge"><span class="header-badge-dot"></span> Pelatihan Wilkerstat 2026</div>
+    <div class="logo-row">
+      <div class="logo-placeholder">BPS<br>LOGO</div>
+      <div style="text-align:left">
+        <div style="font-size:11px;font-weight:700;letter-spacing:0.08em;opacity:0.85">BADAN PUSAT STATISTIK</div>
+        <div style="font-size:13px;font-weight:800;letter-spacing:-0.01em">Kabupaten Gorontalo</div>
+      </div>
+    </div>
+    <h1>Wilkerstat <span>Links</span></h1>
+    <p>Pusat tautan pelatihan Wilayah Kerja Statistik<br>BPS Kabupaten Gorontalo</p>
+    <div class="header-meta">
+      <span>📅 2026</span>
+      <span>📍 Gorontalo</span>
+      <span>👥 Peserta Wilkerstat</span>
+    </div>
+  </div>
+</header>
+
+<div class="container">
+
+  <div class="section-label">Aksi utama</div>
+
+  <!-- Standalone 1: Daftar Hadir -->
+  <a class="standalone-primary" href="#" onclick="event.preventDefault(); alert('Placeholder — link Daftar Hadir akan diisi panitia');">
+    <div class="standalone-primary-left">
+      <div class="standalone-primary-icon">✓</div>
+      <div class="standalone-primary-text">
+        <strong>Daftar Hadir</strong>
+        <small>Tap untuk absensi kehadiran →</small>
+      </div>
+    </div>
+    <span class="standalone-primary-arrow">›</span>
+  </a>
+
+  <div class="section-label">Kelas & materi</div>
+
+  <!-- Accordion A: Kelas Virtual -->
+  <div class="accordion" id="acc-kelas" aria-expanded="false">
+    <button class="accordion-header" aria-expanded="false" aria-controls="panel-kelas" onclick="toggleAcc('acc-kelas')">
+      <div class="accordion-header-left">
+        <div class="accordion-icon blue">🎥</div>
+        <div class="accordion-title">
+          <strong>Kelas Virtual</strong>
+          <small>2 tautan · Zoom & Virtual Background</small>
+        </div>
+      </div>
+      <span class="accordion-chevron">▾</span>
+    </button>
+    <div class="accordion-body" id="panel-kelas" role="region" aria-labelledby="acc-kelas">
+      <div class="accordion-inner">
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Zoom Meeting');">
+          <span class="sub-link-icon">🎥</span>
+          <span class="sub-link-text"><strong>Zoom Meeting</strong><small>Link ruang kelas virtual</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Virtual Background');">
+          <span class="sub-link-icon">🖼️</span>
+          <span class="sub-link-text"><strong>Virtual Background</strong><small>Download background Zoom</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion B: Materi & Jadwal -->
+  <div class="accordion" id="acc-materi" aria-expanded="false">
+    <button class="accordion-header" aria-expanded="false" aria-controls="panel-materi" onclick="toggleAcc('acc-materi')">
+      <div class="accordion-header-left">
+        <div class="accordion-icon green">📚</div>
+        <div class="accordion-title">
+          <strong>Materi & Jadwal</strong>
+          <small>2 tautan · Bahan ajar & jadwal pelatihan</small>
+        </div>
+      </div>
+      <span class="accordion-chevron">▾</span>
+    </button>
+    <div class="accordion-body" id="panel-materi" role="region" aria-labelledby="acc-materi">
+      <div class="accordion-inner">
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Materi Pembelajaran');">
+          <span class="sub-link-icon">📚</span>
+          <span class="sub-link-text"><strong>Materi Pembelajaran</strong><small>Slide, modul & bahan ajar</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Jadwal Pelatihan');">
+          <span class="sub-link-icon">📅</span>
+          <span class="sub-link-text"><strong>Jadwal Pelatihan</strong><small>Rundown & pembagian sesi</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Accordion C: Evaluasi & Tugas -->
+  <div class="accordion" id="acc-evaluasi" aria-expanded="false">
+    <button class="accordion-header" aria-expanded="false" aria-controls="panel-evaluasi" onclick="toggleAcc('acc-evaluasi')">
+      <div class="accordion-header-left">
+        <div class="accordion-icon orange">📝</div>
+        <div class="accordion-title">
+          <strong>Evaluasi & Tugas</strong>
+          <small>3 tautan · Pre-Test → Tugas → Post-Test</small>
+        </div>
+      </div>
+      <span class="accordion-chevron">▾</span>
+    </button>
+    <div class="accordion-body" id="panel-evaluasi" role="region" aria-labelledby="acc-evaluasi">
+      <div class="accordion-inner">
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Pre-Test');">
+          <span class="sub-link-icon">📝</span>
+          <span class="sub-link-text"><strong>Pre-Test</strong><small>Tes awal sebelum materi</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Tugas Asynchronus 1');">
+          <span class="sub-link-icon">📋</span>
+          <span class="sub-link-text"><strong>Tugas Asynchronus 1</strong><small>Tugas mandiri peserta</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+        <a class="sub-link" href="#" onclick="event.preventDefault(); alert('Placeholder — Post-Test');">
+          <span class="sub-link-icon">✅</span>
+          <span class="sub-link-text"><strong>Post-Test</strong><small>Tes akhir setelah materi</small></span>
+          <span class="sub-link-arrow">›</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <div class="section-label">Bantuan</div>
+
+  <!-- Standalone 2: Q&A -->
+  <a class="standalone-secondary" href="#" onclick="event.preventDefault(); alert('Placeholder — Q&A');">
+    <div class="standalone-secondary-left">
+      <div class="standalone-secondary-icon">💬</div>
+      <div class="standalone-secondary-text">
+        <strong>Q&A</strong>
+        <small>Tanya jawab & diskusi</small>
+      </div>
+    </div>
+    <span style="font-size:18px;opacity:0.5">›</span>
+  </a>
+
+</div>
+
+<footer class="footer">
+  <strong>BPS Kabupaten Gorontalo</strong><br>
+  Badan Pusat Statistik — Wilayah Kerja Statistik (Wilkerstat)<br>
+  <div class="footer-links">
+    <a href="https://gorontalokab.bps.go.id" target="_blank" rel="noopener">gorontalokab.bps.go.id</a>
+    <a href="https://www.bps.go.id" target="_blank" rel="noopener">bps.go.id</a>
+  </div>
+  <div style="margin-top:12px;opacity:0.6">© 2026 BPS Kabupaten Gorontalo · Prototype Tiket 03</div>
+</footer>
+
+<script>
+function toggleAcc(id) {
+  const acc = document.getElementById(id);
+  const isOpen = acc.getAttribute('aria-expanded') === 'true';
+  const btn = acc.querySelector('.accordion-header');
+  acc.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+  btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+}
+// Keyboard: Enter/Space already handled by <button> natively
+</script>
+
+</body>
+</html>
