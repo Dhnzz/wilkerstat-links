@@ -17,7 +17,7 @@ Halaman web Linktree Wilkerstat BPS Kabupaten Gorontalo **sudah live** di Netlif
 
 <!-- satu baris per tiket tertutup: gist + link — jangan restate detail -->
 
-_(belum ada — peta baru di-chart)_
+- [01 — Pengelompokan & IA 9 tautan Wilkerstat](https://github.com/Dhnzz/wilkerstat-links/issues/2) — 3 grup accordion + 2 standalone: Daftar Hadir (atas, primary) → Kelas Virtual (Zoom+VB) → Materi & Jadwal → Evaluasi & Tugas (Pre→Tugas→Post) → Q&A (bawah, secondary); default collapsed, multi-expand.
 
 ## Not yet specified
 
