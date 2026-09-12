@@ -22,6 +22,7 @@ Halaman web Linktree Wilkerstat BPS Kabupaten Gorontalo **sudah live** di Netlif
 - [03 — Struktur halaman & interaksi accordion](https://github.com/Dhnzz/wilkerstat-links/issues/4) — Prototype `prototype.html` (single-file vanilla): header gradient + Daftar Hadir primary → 3 accordion (Kelas Virtual, Materi & Jadwal, Evaluasi & Tugas) → Q&A secondary → footer; accordion collapsed default, multi-expand, ARIA + keyboard.
 - [04 — Copy, label tombol & microcopy](https://github.com/Dhnzz/wilkerstat-links/issues/5) — Tone ramah+emoji, ejaan "Tugas Asynchronus 1" & "Pre Test/Post Test" tanpa hyphen; copy final per grup/sub-link + header/footer + microcopy link kosong siap tempel.
 - [05 — Teknis build statis & edit link manual](https://github.com/Dhnzz/wilkerstat-links/issues/6) — Single `index.html` (CSS+JS inline, no build step) + `assets/`; placeholder `href="#"` + `is-disabled` + TODO comment; 6 langkah edit manual; detail di `docs/teknis-build.md`.
+- [06 — Deploy Netlify + domain custom](https://github.com/Dhnzz/wilkerstat-links/issues/7) — `index.html` final 22KB siap deploy; Drag & Drop ⭐ (edit+drag live) atau Git auto-deploy; domain custom ~Rp 100–300rb/tahun + HTTPS Let's Encrypt auto; SOP di `docs/panduan-deploy.md`.
 
 ## Not yet specified
 
