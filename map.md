@@ -18,6 +18,7 @@ Halaman web Linktree Wilkerstat BPS Kabupaten Gorontalo **sudah live** di Netlif
 <!-- satu baris per tiket tertutup: gist + link — jangan restate detail -->
 
 - [01 — Pengelompokan & IA 9 tautan Wilkerstat](https://github.com/Dhnzz/wilkerstat-links/issues/2) — 3 grup accordion + 2 standalone: Daftar Hadir (atas, primary) → Kelas Virtual (Zoom+VB) → Materi & Jadwal → Evaluasi & Tugas (Pre→Tugas→Post) → Q&A (bawah, secondary); default collapsed, multi-expand.
+- [02 — Tema visual BPS Gorontalo & aset](https://github.com/Dhnzz/wilkerstat-links/issues/3) — Palet BPS Blue #002E5D / Orange #F7941E / Green #00875A (WCAG AA), Inter font, logo putih di header gradient, foto kantor + background Gorontalo (Otanaha/Limboto) WebP overlay; detail di `docs/tema-visual.md`.
 
 ## Not yet specified
 
