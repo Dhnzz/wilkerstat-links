@@ -3,25 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-<title>Wilkerstat Links — BPS Kabupaten Gorontalo</title>
-<meta name="description" content="Pusat tautan pelatihan Wilayah Kerja Statistik (Wilkerstat) BPS Kabupaten Gorontalo — materi, jadwal, absensi, kelas virtual & evaluasi dalam satu halaman.">
-<meta name="author" content="BPS Kabupaten Gorontalo">
-<meta name="theme-color" content="#FFF8EC">
-<link rel="canonical" href="https://wilkerstat-gorontalokab.netlify.app/">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Wilkerstat Links — BPS Kabupaten Gorontalo">
-<meta property="og:description" content="Pusat tautan pelatihan Wilkerstat BPS Kabupaten Gorontalo — materi, jadwal, absensi, Zoom & evaluasi.">
-<meta property="og:image" content="https://wilkerstat-gorontalokab.netlify.app/assets/og-image.png">
-<meta property="og:url" content="https://wilkerstat-gorontalokab.netlify.app/">
-<meta property="og:locale" content="id_ID">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="Wilkerstat Links — BPS Kabupaten Gorontalo">
-<meta name="twitter:description" content="Pusat tautan pelatihan Wilkerstat BPS Kabupaten Gorontalo.">
-<meta name="twitter:image" content="https://wilkerstat-gorontalokab.netlify.app/assets/og-image.png">
-<link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon.png">
-<link rel="apple-touch-icon" href="./assets/favicon.png">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<title>Wilkerstat Links — Playful Prototype</title>
 <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -42,7 +24,7 @@
     --radius-pill: 999px;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  html { -webkit-text-size-adjust: 100%; scroll-behavior: smooth; }
+  html { -webkit-text-size-adjust: 100%; }
   body {
     font-family: 'Nunito', system-ui, sans-serif;
     background: var(--cream);
@@ -54,6 +36,7 @@
     -webkit-tap-highlight-color: transparent;
     padding-bottom: env(safe-area-inset-bottom);
   }
+  /* playful dotted bg */
   body::before {
     content: '';
     position: fixed; inset: 0;
@@ -62,6 +45,18 @@
     opacity: 0.35;
     pointer-events: none;
   }
+  /* Top playful banner */
+  .play-banner {
+    position: relative; z-index: 2;
+    background: var(--yellow);
+    text-align: center;
+    padding: 8px 14px;
+    font-family: 'Fredoka', sans-serif;
+    font-size: 12px; font-weight: 700;
+    letter-spacing: 0.02em;
+    border-bottom: 3px solid var(--ink);
+  }
+  /* Header — white playful card, not government gradient */
   .header {
     position: relative; z-index: 1;
     max-width: 520px; margin: 16px auto 0;
@@ -124,6 +119,19 @@
     height: 8px; background: #FFD98A; z-index: -1; border-radius: 4px;
   }
   .header p { font-size: 13.5px; font-weight: 700; opacity: 0.7; line-height: 1.4; }
+  .header-meta { margin-top: 12px; display: flex; justify-content: center; gap: 7px; flex-wrap: wrap; }
+  .chip {
+    font-size: 11px; font-weight: 800;
+    padding: 5px 11px; border-radius: var(--radius-pill);
+    border: 2px solid var(--ink);
+    background: white;
+    box-shadow: 2px 2px 0 var(--ink);
+  }
+  .chip.blue { background: var(--blue-soft); }
+  .chip.orange { background: var(--orange-soft); }
+  .chip.green { background: var(--green-soft); }
+
+  /* Container */
   .container { max-width: 520px; margin: 0 auto; padding: 16px 16px 40px; position: relative; z-index: 1; }
   .section-label {
     font-family: 'Fredoka', sans-serif;
@@ -134,6 +142,8 @@
     display: flex; align-items: center; gap: 8px;
   }
   .section-label::after { content: ''; flex: 1; height: 2px; background: var(--ink); opacity: 0.08; border-radius: 999px; }
+
+  /* Standalone primary — chunky playful */
   .standalone-primary {
     display: flex; align-items: center; justify-content: space-between;
     background: var(--yellow);
@@ -149,8 +159,6 @@
   }
   .standalone-primary:hover { transform: rotate(0deg) translateY(-2px) scale(1.01); box-shadow: 7px 7px 0 var(--ink); }
   .standalone-primary:active { transform: translateY(1px) scale(0.99); box-shadow: 3px 3px 0 var(--ink); }
-  .standalone-primary.is-disabled { cursor: not-allowed; opacity: 0.92; }
-  .standalone-primary.is-disabled:hover { transform: rotate(0.3deg); box-shadow: 5px 5px 0 var(--ink); }
   .sp-left { display: flex; align-items: center; gap: 14px; }
   .sp-icon {
     width: 48px; height: 48px;
@@ -172,6 +180,8 @@
     padding: 2px 7px; border-radius: 999px; margin-left: 6px;
     transform: rotate(2deg); vertical-align: middle;
   }
+
+  /* Accordion playful */
   .accordion {
     background: white;
     border: 3px solid var(--ink);
@@ -189,7 +199,6 @@
     padding: 14px 16px; background: white; border: none; cursor: pointer;
     text-align: left; font-family: inherit;
   }
-  .accordion-header:focus-visible { outline: 3px solid var(--yellow); outline-offset: -2px; }
   .acc-left { display: flex; align-items: center; gap: 12px; }
   .acc-icon {
     width: 44px; height: 44px; border-radius: 14px;
@@ -213,6 +222,7 @@
   .accordion-body { max-height: 0; overflow: hidden; transition: max-height 0.3s ease; }
   .accordion[aria-expanded="true"] .accordion-body { max-height: 520px; }
   .accordion-inner { padding: 2px 12px 14px; display: flex; flex-direction: column; gap: 9px; }
+
   .sub-link {
     display: flex; align-items: center; gap: 12px;
     padding: 12px 13px;
@@ -224,8 +234,6 @@
     box-shadow: 3px 3px 0 rgba(30,42,68,0.12);
   }
   .sub-link:hover { background: white; transform: translateY(-1px) scale(1.01); box-shadow: 4px 4px 0 var(--ink); }
-  .sub-link.is-disabled { cursor: not-allowed; opacity: 0.72; }
-  .sub-link.is-disabled:hover { background: var(--cream); transform: none; box-shadow: 3px 3px 0 rgba(30,42,68,0.12); }
   .sub-link-icon {
     width: 38px; height: 38px; background: white; border: 2px solid var(--ink);
     border-radius: 11px; display: flex; align-items: center; justify-content: center;
@@ -234,6 +242,8 @@
   .sub-link-text strong { font-size: 13.5px; font-weight: 800; display: block; line-height: 1.1; }
   .sub-link-text small { font-size: 11px; font-weight: 700; opacity: 0.55; }
   .sub-link-arrow { margin-left: auto; width: 26px; height: 26px; background: var(--ink); color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+
+  /* Secondary standalone */
   .standalone-secondary {
     display: flex; align-items: center; justify-content: space-between;
     background: white; color: var(--ink); text-decoration: none;
@@ -243,17 +253,16 @@
     transform: rotate(-0.3deg);
   }
   .standalone-secondary:hover { transform: rotate(0deg) translateY(-1px); }
-  .standalone-secondary.is-disabled { cursor: not-allowed; opacity: 0.72; }
-  .standalone-secondary.is-disabled:hover { transform: rotate(-0.3deg); }
+
+  /* Footer playful */
   .footer {
     text-align: center; padding: 22px 16px 28px;
     font-size: 11px; font-weight: 700; opacity: 0.55; line-height: 1.6;
     position: relative; z-index: 1;
   }
   .footer strong { font-family: 'Fredoka', sans-serif; font-size: 13px; opacity: 1; color: var(--ink); }
-  .footer-links { margin-top: 10px; display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
-  .footer-links a { color: var(--blue); text-decoration: none; font-weight: 800; font-size: 11px; }
-  .footer-links a:hover { text-decoration: underline; }
+
+  /* Toast */
   .toast {
     position: fixed; bottom: 18px; left: 50%;
     transform: translateX(-50%) translateY(90px);
@@ -265,13 +274,19 @@
     white-space: nowrap; max-width: 90vw; text-align: center;
   }
   .toast.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+
+  /* wavy divider */
   .wavy { max-width: 520px; margin: 8px auto 0; display: block; position: relative; z-index: 1; }
+
+  /* ========== MOBILE TUNING ========== */
+  /* Base already mobile-first (520px). Tweaks untuk HP kecil & besar */
   @media (max-width: 380px) {
     .header { margin: 10px 10px 0; padding: 18px 14px 14px; border-radius: 22px; box-shadow: 4px 4px 0 var(--ink); }
     .header h1 { font-size: 26px; }
     .header p { font-size: 12.5px; }
     .header p br { display: none; }
     .logo-box { width: 46px; height: 46px; }
+    .chip { font-size: 10px; padding: 4px 9px; }
     .standalone-primary { padding: 14px 14px; border-radius: 20px; box-shadow: 4px 4px 0 var(--ink); }
     .sp-icon { width: 42px; height: 42px; font-size: 19px; }
     .sp-text strong { font-size: 15px; }
@@ -287,12 +302,14 @@
     .header { margin: 18px auto 0; }
     .container { padding: 18px 16px 40px; }
   }
+  /* Tablet/desktop — tetap centered, tapi header lebih lega */
   @media (min-width: 600px) {
     .header { max-width: 560px; padding: 28px 28px 22px; border-radius: 32px; }
     .header h1 { font-size: 34px; }
     .container { max-width: 560px; }
     .wavy { max-width: 560px; }
   }
+  /* Touch: hilangkan hover rotate di HP, perbesar tap area */
   @media (hover: none) and (pointer: coarse) {
     .accordion:hover { transform: none; }
     .accordion:nth-child(odd), .accordion:nth-child(even) { transform: none; }
@@ -304,6 +321,7 @@
     .sub-link { min-height: 62px; }
     .standalone-primary, .standalone-secondary { min-height: 72px; }
   }
+  /* Safe area untuk iPhone ber-poni */
   @supports (padding: max(0px)) {
     .container { padding-left: max(16px, env(safe-area-inset-left)); padding-right: max(16px, env(safe-area-inset-right)); }
   }
@@ -311,13 +329,13 @@
 </head>
 <body>
 
+<div class="play-banner">✨ Preview Playful — bandingkan dengan versi pemerintah di <a href="./index.html" style="color:var(--ink);text-decoration:underline">index.html</a> ✨</div>
+
 <header class="header">
   <div class="header-inner">
     <div class="header-badge">🎉 Pelatihan Wilkerstat 2026</div>
     <div class="logo-row">
-      <div class="logo-box" aria-label="Logo BPS">
-        <img src="./assets/logo_bps.webp" alt="Logo BPS">
-      </div>
+      <div class="logo-box"><img src="./assets/logo_bps.webp" alt="Logo BPS"></div>
       <div class="bps-label">
         <small>BADAN PUSAT STATISTIK</small>
         <strong>Kabupaten Gorontalo</strong>
@@ -328,131 +346,83 @@
   </div>
 </header>
 
+<!-- wavy doodle -->
 <svg class="wavy" viewBox="0 0 520 18" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M2 10 Q 30 2 58 10 T 114 10 T 170 10 T 226 10 T 282 10 T 338 10 T 394 10 T 450 10 T 518 10" stroke="#1E2A44" stroke-width="3" stroke-linecap="round" opacity="0.12"/></svg>
 
 <div class="container">
 
   <div class="section-label">⭐ Aksi utama</div>
 
-  <!-- TODO: ganti href="#" dengan URL Daftar Hadir (mis. Google Form) -->
-  <a class="standalone-primary is-disabled" href="#" data-placeholder="Daftar Hadir" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
+  <a class="standalone-primary" href="#" data-placeholder="Daftar Hadir">
     <div class="sp-left">
-      <div class="sp-icon" aria-hidden="true">✓</div>
+      <div class="sp-icon">✓</div>
       <div class="sp-text">
         <strong>Daftar Hadir <span class="sp-badge">wajib!</span></strong>
         <small>Absen dulu yuk →</small>
       </div>
     </div>
-    <span class="sp-arrow" aria-hidden="true">›</span>
+    <span class="sp-arrow">›</span>
   </a>
 
-  <div class="section-label">📦 Kelas &amp; materi</div>
+  <div class="section-label">📦 Kelas & materi</div>
 
-  <!-- Accordion A: Kelas Virtual -->
   <div class="accordion" id="acc-kelas" aria-expanded="false">
     <button class="accordion-header" type="button" aria-expanded="false" aria-controls="panel-kelas" onclick="toggleAcc('acc-kelas')">
       <div class="acc-left">
-        <div class="acc-icon blue" aria-hidden="true">🎥</div>
-        <div class="acc-title">
-          <strong>Kelas Virtual</strong>
-          <small>2 tautan · Zoom &amp; Virtual Background</small>
-        </div>
+        <div class="acc-icon blue">🎥</div>
+        <div class="acc-title"><strong>Kelas Virtual</strong><small>2 tautan · Zoom & Virtual Background</small></div>
       </div>
-      <span class="acc-chevron" aria-hidden="true">▾</span>
+      <span class="acc-chevron">▾</span>
     </button>
-    <div class="accordion-body" id="panel-kelas" role="region" aria-labelledby="acc-kelas">
+    <div class="accordion-body" id="panel-kelas" role="region">
       <div class="accordion-inner">
-        <!-- TODO: ganti href="#" dengan URL Zoom Meeting -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Zoom Meeting" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">🎥</span>
-          <span class="sub-link-text"><strong>Zoom Meeting</strong><small>Link ruang kelas virtual</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
-        <!-- TODO: ganti href="#" dengan URL Virtual Background (Drive / download) -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Virtual Background" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">🖼️</span>
-          <span class="sub-link-text"><strong>Virtual Background</strong><small>Download background Zoom</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
+        <a class="sub-link" href="#" data-placeholder="Zoom Meeting"><span class="sub-link-icon">🎥</span><span class="sub-link-text"><strong>Zoom Meeting</strong><small>Link ruang kelas virtual</small></span><span class="sub-link-arrow">›</span></a>
+        <a class="sub-link" href="#" data-placeholder="Virtual Background"><span class="sub-link-icon">🖼️</span><span class="sub-link-text"><strong>Virtual Background</strong><small>Download background Zoom</small></span><span class="sub-link-arrow">›</span></a>
       </div>
     </div>
   </div>
 
-  <!-- Accordion B: Materi & Jadwal -->
   <div class="accordion" id="acc-materi" aria-expanded="false">
     <button class="accordion-header" type="button" aria-expanded="false" aria-controls="panel-materi" onclick="toggleAcc('acc-materi')">
       <div class="acc-left">
-        <div class="acc-icon green" aria-hidden="true">📚</div>
-        <div class="acc-title">
-          <strong>Materi &amp; Jadwal</strong>
-          <small>2 tautan · Bahan ajar &amp; jadwal pelatihan</small>
-        </div>
+        <div class="acc-icon green">📚</div>
+        <div class="acc-title"><strong>Materi & Jadwal</strong><small>2 tautan · Bahan ajar & jadwal</small></div>
       </div>
-      <span class="acc-chevron" aria-hidden="true">▾</span>
+      <span class="acc-chevron">▾</span>
     </button>
-    <div class="accordion-body" id="panel-materi" role="region" aria-labelledby="acc-materi">
+    <div class="accordion-body" id="panel-materi" role="region">
       <div class="accordion-inner">
-        <!-- TODO: ganti href="#" dengan URL Materi Pembelajaran -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Materi Pembelajaran" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">📚</span>
-          <span class="sub-link-text"><strong>Materi Pembelajaran</strong><small>Slide, modul &amp; bahan ajar</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
-        <!-- TODO: ganti href="#" dengan URL Jadwal Pelatihan -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Jadwal Pelatihan" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">📅</span>
-          <span class="sub-link-text"><strong>Jadwal Pelatihan</strong><small>Rundown &amp; pembagian sesi</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
+        <a class="sub-link" href="#" data-placeholder="Materi Pembelajaran"><span class="sub-link-icon">📚</span><span class="sub-link-text"><strong>Materi Pembelajaran</strong><small>Slide, modul & bahan ajar</small></span><span class="sub-link-arrow">›</span></a>
+        <a class="sub-link" href="#" data-placeholder="Jadwal Pelatihan"><span class="sub-link-icon">📅</span><span class="sub-link-text"><strong>Jadwal Pelatihan</strong><small>Rundown & pembagian sesi</small></span><span class="sub-link-arrow">›</span></a>
       </div>
     </div>
   </div>
 
-  <!-- Accordion C: Evaluasi & Tugas -->
   <div class="accordion" id="acc-evaluasi" aria-expanded="false">
     <button class="accordion-header" type="button" aria-expanded="false" aria-controls="panel-evaluasi" onclick="toggleAcc('acc-evaluasi')">
       <div class="acc-left">
-        <div class="acc-icon orange" aria-hidden="true">📝</div>
-        <div class="acc-title">
-          <strong>Evaluasi &amp; Tugas</strong>
-          <small>3 tautan · Pre Test → Tugas → Post Test</small>
-        </div>
+        <div class="acc-icon orange">📝</div>
+        <div class="acc-title"><strong>Evaluasi & Tugas</strong><small>3 tautan · Pre Test → Tugas → Post Test</small></div>
       </div>
-      <span class="acc-chevron" aria-hidden="true">▾</span>
+      <span class="acc-chevron">▾</span>
     </button>
-    <div class="accordion-body" id="panel-evaluasi" role="region" aria-labelledby="acc-evaluasi">
+    <div class="accordion-body" id="panel-evaluasi" role="region">
       <div class="accordion-inner">
-        <!-- TODO: ganti href="#" dengan URL Pre Test -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Pre Test" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">📝</span>
-          <span class="sub-link-text"><strong>Pre Test</strong><small>Tes awal sebelum materi</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
-        <!-- TODO: ganti href="#" dengan URL Tugas Asynchronus 1 -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Tugas Asynchronus 1" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">📋</span>
-          <span class="sub-link-text"><strong>Tugas Asynchronus 1</strong><small>Tugas mandiri peserta</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
-        <!-- TODO: ganti href="#" dengan URL Post Test -->
-        <a class="sub-link is-disabled" href="#" data-placeholder="Post Test" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
-          <span class="sub-link-icon" aria-hidden="true">✅</span>
-          <span class="sub-link-text"><strong>Post Test</strong><small>Tes akhir setelah materi</small></span>
-          <span class="sub-link-arrow" aria-hidden="true">›</span>
-        </a>
+        <a class="sub-link" href="#" data-placeholder="Pre Test"><span class="sub-link-icon">📝</span><span class="sub-link-text"><strong>Pre Test</strong><small>Tes awal sebelum materi</small></span><span class="sub-link-arrow">›</span></a>
+        <a class="sub-link" href="#" data-placeholder="Tugas Asynchronus 1"><span class="sub-link-icon">📋</span><span class="sub-link-text"><strong>Tugas Asynchronus 1</strong><small>Tugas mandiri peserta</small></span><span class="sub-link-arrow">›</span></a>
+        <a class="sub-link" href="#" data-placeholder="Post Test"><span class="sub-link-icon">✅</span><span class="sub-link-text"><strong>Post Test</strong><small>Tes akhir setelah materi</small></span><span class="sub-link-arrow">›</span></a>
       </div>
     </div>
   </div>
 
   <div class="section-label">💬 Bantuan</div>
 
-  <!-- TODO: ganti href="#" dengan URL Q&A (mis. Google Form / grup WA / Slido) -->
-  <a class="standalone-secondary is-disabled" href="#" data-placeholder="Q&A" aria-disabled="true" title="Segera hadir — link akan aktif H-1 pelatihan">
+  <a class="standalone-secondary" href="#" data-placeholder="Q&A">
     <div style="display:flex;align-items:center;gap:12px">
-      <div style="width:42px;height:42px;background:var(--pink-soft);border:2.5px solid var(--ink);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:19px;transform:rotate(2deg)" aria-hidden="true">💬</div>
-      <div><strong style="font-family:'Fredoka',sans-serif;font-size:15px;display:block;line-height:1">Q&A</strong><small style="font-size:11px;font-weight:700;opacity:0.55">Tanya jawab &amp; diskusi</small></div>
+      <div style="width:42px;height:42px;background:var(--pink-soft);border:2.5px solid var(--ink);border-radius:13px;display:flex;align-items:center;justify-content:center;font-size:19px;transform:rotate(2deg)">💬</div>
+      <div><strong style="font-family:'Fredoka',sans-serif;font-size:15px;display:block;line-height:1">Q&A</strong><small style="font-size:11px;font-weight:700;opacity:0.55">Tanya jawab & diskusi</small></div>
     </div>
-    <span style="width:32px;height:32px;background:var(--ink);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center" aria-hidden="true">›</span>
+    <span style="width:32px;height:32px;background:var(--ink);color:white;border-radius:50%;display:flex;align-items:center;justify-content:center">›</span>
   </a>
 
 </div>
@@ -460,38 +430,32 @@
 <footer class="footer">
   <strong>BPS Kabupaten Gorontalo ✨</strong><br>
   Badan Pusat Statistik — Wilayah Kerja Statistik (Wilkerstat)<br>
-  <div class="footer-links">
-    <a href="https://gorontalokab.bps.go.id" target="_blank" rel="noopener">gorontalokab.bps.go.id</a>
-    <a href="https://www.bps.go.id" target="_blank" rel="noopener">bps.go.id</a>
+  <div style="margin-top:8px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap">
+    <a href="https://gorontalokab.bps.go.id" target="_blank" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none">gorontalokab.bps.go.id</a>
+    <a href="https://www.bps.go.id" target="_blank" rel="noopener" style="color:var(--blue);font-weight:800;text-decoration:none">bps.go.id</a>
   </div>
-  <div style="margin-top:10px;opacity:0.5">© 2026 BPS Kabupaten Gorontalo</div>
+  <div style="margin-top:10px;opacity:0.5">© 2026 BPS Kabupaten Gorontalo · versi playful 🎨</div>
 </footer>
 
 <div id="toast" class="toast" role="status" aria-live="polite"></div>
-
 <script>
-function toggleAcc(id) {
-  const acc = document.getElementById(id);
-  const isOpen = acc.getAttribute('aria-expanded') === 'true';
-  const btn = acc.querySelector('.accordion-header');
-  acc.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
-  btn.setAttribute('aria-expanded', isOpen ? 'false' : 'true');
+function toggleAcc(id){
+  const acc=document.getElementById(id);
+  const isOpen=acc.getAttribute('aria-expanded')==='true';
+  acc.setAttribute('aria-expanded', isOpen?'false':'true');
+  acc.querySelector('.accordion-header').setAttribute('aria-expanded', isOpen?'false':'true');
 }
-function showToast(msg) {
-  const t = document.getElementById('toast');
-  t.textContent = msg;
-  t.classList.add('show');
-  clearTimeout(t._hide);
-  t._hide = setTimeout(() => t.classList.remove('show'), 2600);
+function showToast(msg){
+  const t=document.getElementById('toast');
+  t.textContent=msg; t.classList.add('show');
+  clearTimeout(t._hide); t._hide=setTimeout(()=>t.classList.remove('show'),2600);
 }
-document.querySelectorAll('a.is-disabled').forEach(a => {
-  a.addEventListener('click', e => {
+document.querySelectorAll('a[data-placeholder]').forEach(a=>{
+  a.addEventListener('click',e=>{
     e.preventDefault();
-    const name = a.getAttribute('data-placeholder') || 'Link';
-    showToast(name + ' — segera hadir ✨');
+    showToast(a.getAttribute('data-placeholder')+' — segera hadir ✨');
   });
 });
 </script>
-
 </body>
 </html>
